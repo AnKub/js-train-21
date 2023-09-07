@@ -28,10 +28,15 @@
  */
 
 class Musician {
-  // статичне поле count, яке відслідковує кількість музикантів, початкове значення 0
-  // Об'являємо приватні поля #name; #instrument;
+  static count = 0;
+  #name;
+  #instrument;
+
 
   constructor(name, instrument) {
+    this.#name = name;
+    this.#instrument = instrument;
+    this.count ++;
     // Конструктор приймає два параметри: name та instrument
     // присвоєння вхідного значення name до приватного поля #name
     // присвоєння вхідного значення instrument до приватного поля #instrument
@@ -41,24 +46,29 @@ class Musician {
   get name() {
     // гетер для приватного поля #name
     // повертає значення приватного поля #name
+    return `${this.#name}`;
   }
 
   get instrument() {
     // гетер для приватного поля #instrument
     // повертає значення приватного поля #instrument
+     return `${this.#instrument}`;
   }
 
   set name(newName) {
     // сетер для приватного поля #name
     // присвоює нове значення приватному полю #name
+    newName = this.#name;
   }
 
   set instrument(newInstrument) {
     // сетер для приватного поля #instrument
     // присвоює нове значення приватному полю #instrument
+    newInstrument = this.#instrument;
   }
 
   play() {
+    return (`${this.#name} play on ${this.#instrument}`)
     // метод, що виводить рядок в консоль <#name> грає на <#instrument>
   }
 }
